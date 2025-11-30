@@ -61,7 +61,7 @@
   <div class="resume-container" id="resume">
     <!-- 照片 -->
     <div style="text-align:center;">
-      <img src="IMG/IMG_0452.jpg.jpeg" alt="我的照片" class="photo">
+      <img src="https://love07280806-boop.github.io/resume251130/IMG/IMG_0452_2.jpg.jpeg" alt="我的照片" class="photo">
     </div>
 
     <!-- 基本資料 -->
@@ -99,10 +99,8 @@
       const { jsPDF } = window.jspdf;
       const doc = new jsPDF();
 
-      // 取得履歷容器
       const resume = document.getElementById('resume');
 
-      // 將 HTML 轉成 PDF
       doc.html(resume, {
         callback: function(doc) {
           doc.save('履歷表.pdf');
