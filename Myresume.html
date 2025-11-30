@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>個人履歷表</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      padding: 20px;
+    }
+    .resume-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .photo {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #0ea5a4;
+    }
+    h1 {
+      color: #0ea5a4;
+      margin-bottom: 5px;
+    }
+    h2 {
+      color: #333;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+    p {
+      margin: 5px 0;
+    }
+    .contact-info {
+      margin-bottom: 20px;
+    }
+    .button-container {
+      text-align: right;
+      margin-top: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #0ea5a4;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #028484;
+    }
+  </style>
+</head>
+<body>
+  <div class="resume-container" id="resume">
+    <!-- 照片 -->
+    <div style="text-align:center;">
+      <img src="photo.jpg" alt="我的照片" class="photo">
+    </div>
+
+    <!-- 基本資料 -->
+    <h1>吳旻臻</h1>
+    <div class="contact-info">
+      <p>Email: <a href="mailto:114031089@live.asia.edu.tw">114031089@live.asia.edu.tw</a></p>
+      <!-- 電話已隱藏 -->
+      <!-- <p>電話: 09xxxxxxxx</p> -->
+      <p>學歷: 亞洲大學 經營管理系</p>
+    </div>
+
+    <!-- 經歷 -->
+    <h2>經歷</h2>
+    <p>2023 - 2025：校內社團幹部</p>
+    <p>2024：實習於XXX公司</p>
+
+    <!-- 技能 -->
+    <h2>技能</h2>
+    <p>Excel / PowerPoint / Word</p>
+    <p>簡報與企劃能力</p>
+
+    <!-- 興趣 -->
+    <h2>興趣</h2>
+    <p>閱讀、旅行、攝影</p>
+
+    <div class="button-container">
+      <button onclick="downloadPDF()">輸出 PDF</button>
+    </div>
+  </div>
+
+  <!-- jsPDF CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    function downloadPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      // 取得履歷容器
+      const resume = document.getElementById('resume');
+
+      // 將 HTML 轉成 PDF
+      doc.html(resume, {
+        callback: function(doc) {
+          doc.save('履歷表.pdf');
+        },
+        x: 10,
+        y: 10,
+        width: 180
+      });
+    }
+  </script>
+</body>
+</html>
